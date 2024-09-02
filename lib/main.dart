@@ -38,12 +38,18 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var appState = context.watch<MyAppState>();
+    var pair = appState.current;
 
     return Scaffold(
       body: Column(
         children: [
           Text('A random AWESOME idea:'),
-          Text(appState.current.asPascalCase),
+          // Change next code line to access specific data instead of all state
+          // We will use the "Extract Widget" helper later so we need the code we 
+          // will extract to have access only to the minimun needed data, so it is
+          // a good practice to always have our code accesing specific data in case
+          // we need to extract the code into a new widget.
+          Text(pair.asPascalCase),
           ElevatedButton(
             onPressed: () {
               appState.getNext();
