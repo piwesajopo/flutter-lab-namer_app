@@ -41,21 +41,23 @@ class MyHomePage extends StatelessWidget {
     var pair = appState.current;
 
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text('A random AWESOME idea:'),
-          // Now we refactored the code with the Extract Widget option
-          // To do this we used right click then selected "Refactor..."
-          // (or you can insted you can also press command + .)
-          BigCard(pair: pair),
-          ElevatedButton(
-            onPressed: () {
-              appState.getNext();
-            },
-            child: Text('Next'),
-          ),
-        ],
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('A random AWESOME idea:'),
+            // Now we refactored the code with the Extract Widget option
+            // To do this we used right click then selected "Refactor..."
+            // (or you can insted you can also press command + .)
+            BigCard(pair: pair),
+            ElevatedButton(
+              onPressed: () {
+                appState.getNext();
+              },
+              child: Text('Next'),
+            ),
+          ],
+        ),
       ),
     );
   }
