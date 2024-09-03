@@ -42,6 +42,7 @@ class MyHomePage extends StatelessWidget {
 
     return Scaffold(
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text('A random AWESOME idea:'),
           // Now we refactored the code with the Extract Widget option
@@ -91,7 +92,8 @@ class BigCard extends StatelessWidget {
         child: Text(
           pair.asPascalCase,
           style: style,
-          semanticsLabel: "${pair.first} ${pair.second}", // Add semantic meaning to this Text Widget
+          semanticsLabel:
+              "${pair.first} ${pair.second}", // Add semantic meaning to this Text Widget
         ), //
       ),
     );
