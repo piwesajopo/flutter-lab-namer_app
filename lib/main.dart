@@ -52,6 +52,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  // Add a new property that tracks the widget state
+  var selectedIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,9 +76,12 @@ class _MyHomePageState extends State<MyHomePage> {
                   label: Text('Favorites'),
                 ),
               ],
-              selectedIndex: 0,
+              selectedIndex: selectedIndex, // use new property
               onDestinationSelected: (value) {
-                print('selected: $value');
+                setState(() {
+                  selectedIndex =
+                      value; // Update selectedIndex with new selection
+                });
               },
             ),
           ),
