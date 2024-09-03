@@ -45,11 +45,8 @@ class MyHomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('A random AWESOME idea:'),
-            // Now we refactored the code with the Extract Widget option
-            // To do this we used right click then selected "Refactor..."
-            // (or you can insted you can also press command + .)
             BigCard(pair: pair),
+            SizedBox(height: 10),
             ElevatedButton(
               onPressed: () {
                 appState.getNext();
