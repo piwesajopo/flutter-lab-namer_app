@@ -45,14 +45,21 @@ class MyAppState extends ChangeNotifier {
   }
 }
 
-// We modified MyHomePage class to have a Row widget
-// at the body that will contain the navigation rail
-class MyHomePage extends StatelessWidget {
+// We just used Convert to Stateful Widget
+class MyHomePage extends StatefulWidget {
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Row(
         children: [
+          // The SafeArea ensures that its child is not obscured by a hardware notch
+          // or a status bar. In this app, the widget wraps around NavigationRail to
+          // prevent the navigation buttons from being obscured by something
           SafeArea(
             child: NavigationRail(
               extended: false,
@@ -84,8 +91,6 @@ class MyHomePage extends StatelessWidget {
   }
 }
 
-// We moved the code from MyHomePage to a new 
-// GeneratorPage class that will be used inside a widget
 class GeneratorPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
