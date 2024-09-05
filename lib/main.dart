@@ -67,43 +67,45 @@ class _MyHomePageState extends State<MyHomePage> {
         throw UnimplementedError('no widget for $selectedIndex');
     }
 
-    return Scaffold(
-      body: Row(
-        children: [
-          // The SafeArea ensures that its child is not obscured by a hardware notch
-          // or a status bar. In this app, the widget wraps around NavigationRail to
-          // prevent the navigation buttons from being obscured by something
-          SafeArea(
-            child: NavigationRail(
-              extended: false,
-              destinations: [
-                NavigationRailDestination(
-                  icon: Icon(Icons.home),
-                  label: Text('Home'),
-                ),
-                NavigationRailDestination(
-                  icon: Icon(Icons.favorite),
-                  label: Text('Favorites'),
-                ),
-              ],
-              selectedIndex: selectedIndex, // use new property
-              onDestinationSelected: (value) {
-                setState(() {
-                  selectedIndex =
-                      value; // Update selectedIndex with new selection
-                });
-              },
+    return LayoutBuilder(builder: (context, constraints) {
+      return Scaffold(
+        body: Row(
+          children: [
+            // The SafeArea ensures that its child is not obscured by a hardware notch
+            // or a status bar. In this app, the widget wraps around NavigationRail to
+            // prevent the navigation buttons from being obscured by something
+            SafeArea(
+              child: NavigationRail(
+                extended: constraints.maxWidth >= 600,
+                destinations: [
+                  NavigationRailDestination(
+                    icon: Icon(Icons.home),
+                    label: Text('Home'),
+                  ),
+                  NavigationRailDestination(
+                    icon: Icon(Icons.favorite),
+                    label: Text('Favorites'),
+                  ),
+                ],
+                selectedIndex: selectedIndex, // use new property
+                onDestinationSelected: (value) {
+                  setState(() {
+                    selectedIndex =
+                        value; // Update selectedIndex with new selection
+                  });
+                },
+              ),
             ),
-          ),
-          Expanded(
-            child: Container(
-              color: Theme.of(context).colorScheme.primaryContainer,
-              child: page,
+            Expanded(
+              child: Container(
+                color: Theme.of(context).colorScheme.primaryContainer,
+                child: page,
+              ),
             ),
-          ),
-        ],
-      ),
-    );
+          ],
+        ),
+      );
+    });
   }
 }
 
